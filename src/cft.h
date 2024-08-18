@@ -6,9 +6,13 @@
 #include "tag.h"
 #include "arg.h"
 
-typedef struct Cft {
+typedef struct CftBase {
     TrTag tags;
     TrTagRef reverse;
+} CftBase;
+
+typedef struct Cft {
+    CftBase base;
     Str comments;
     //TrrTagRef all;
     struct {
@@ -22,6 +26,7 @@ typedef struct Cft {
         bool recursive;
         int list_tags;
         int list_files;
+        Str extensions;
         //Str *find_and;
         //Str *find_any;
         //Str *find_not;
