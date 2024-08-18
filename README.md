@@ -12,6 +12,9 @@
     cd c-file-tagger/src
     make install
 
+## Dependency
+    - `jemalloc`
+
 ## Usage
 
 List all tags:
