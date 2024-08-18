@@ -13,7 +13,7 @@
     make install
 
 ## Dependency
-    - `jemalloc`
+- `jemalloc`
 
 ## Usage
 
