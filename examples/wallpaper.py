@@ -15,6 +15,15 @@ def main(args_str: str):
 
     img_list: list = get_img.splitlines()
 
+    if str(img_list[1]).startswith("["):
+        img_list_buffer: list = []
+        for i in img_list:
+            i = i[i.find("] ") + 2:i.find(" (")]
+            img_list_buffer.append(i)
+
+        img_list = []
+        img_list = img_list_buffer
+
     try:
         with open(wallpaper_old, "r", encoding="utf-8") as file:
             wallpaper_old_img: str = file.readline()
@@ -39,9 +48,11 @@ def main(args_str: str):
 
 
 def tofi() -> str:
-    comand: str = os.popen('echo -e "any\nand\nnot\ncostum" | tofi'
+    comand: str = os.popen('echo -e "any\nand\nnot\nrandom\ncostum" | tofi'
                            ).read().removesuffix("\n")
-    if comand != "costum":
+    if comand == "random":
+        return "--list-files"
+    elif comand != "costum":
         tag: str = os.popen(f"echo $(cft {pre_args} --list-tags |"
                             f"tofi --prompt-text '{comand} ')"
                             ).read().removesuffix("\n")
