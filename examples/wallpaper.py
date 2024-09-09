@@ -4,7 +4,7 @@ import random
 import os
 import sys
 
-wallpaper_path = "$Home/dokumente-sync/wallpaper"
+wallpaper_path = "$HOME/dokumente-sync/wallpaper"
 wallpaper_old = "wallpaper_old.txt"
 pre_args: str = "-x .csv --input $HOME/python/anime-dlp-2/tags.csv"
 
