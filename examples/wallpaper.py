@@ -4,9 +4,9 @@ import random
 import os
 import sys
 
-wallpaper_path = "/home/tzwicker/Dokumente/python/anime-dlp-2/wallpaper"
+wallpaper_path = "$Home/dokumente-sync/wallpaper"
 wallpaper_old = "wallpaper_old.txt"
-pre_args: str = "-x .csv --input $HOME/Dokumente/python/anime-dlp-2/tags.csv"
+pre_args: str = "-x .csv --input $HOME/python/anime-dlp-2/tags.csv"
 
 
 def main(args_str: str):
@@ -15,14 +15,14 @@ def main(args_str: str):
 
     img_list: list = get_img.splitlines()
 
-    if str(img_list[1]).startswith("["):
-        img_list_buffer: list = []
-        for i in img_list:
-            i = i[i.find("] ") + 2:i.find(" (")]
-            img_list_buffer.append(i)
+    # if str(img_list[1]).startswith("["):
+    #     img_list_buffer: list = []
+    #     for i in img_list:
+    #         i = i[i.find("] ") + 2:i.find(" (")]
+    #         img_list_buffer.append(i)
 
-        img_list = []
-        img_list = img_list_buffer
+    #     img_list = []
+    #     img_list = img_list_buffer
 
     try:
         with open(wallpaper_old, "r", encoding="utf-8") as file:
@@ -51,7 +51,7 @@ def tofi() -> str:
     comand: str = os.popen('echo -e "any\nand\nnot\nrandom\ncostum" | tofi'
                            ).read().removesuffix("\n")
     if comand == "random":
-        return "--list-files"
+        return "--list-files -d no"
     elif comand != "costum":
         tag: str = os.popen(f"echo $(cft {pre_args} --list-tags |"
                             f"tofi --prompt-text '{comand} ')"
